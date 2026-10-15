@@ -6,5 +6,7 @@ export function wordCount(text) {
 
 // Counts how often `word` appears in `text` as a whole word, ignoring case.
 export function wordFrequency(text, word) {
-  return text.match(new RegExp(`\\b${RegExp.escape(word)}\\b`, "gi"))?.length ?? 0;
+  if (word === "") return 0;
+  const literal = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return text.match(new RegExp(`(?<![\\p{L}\\p{N}_])${literal}(?![\\p{L}\\p{N}_])`, "giu"))?.length ?? 0;
 }
