@@ -13,5 +13,6 @@ export function wordFrequency(text, word) {
 
 // Replaces every literal occurrence of `word` in `text`, ignoring case.
 export function replaceWord(text, word, replacement) {
-  return text.replace(new RegExp(RegExp.escape(word), "gi"), () => replacement);
+  const literal = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return text.replace(new RegExp(literal, "gi"), () => replacement);
 }

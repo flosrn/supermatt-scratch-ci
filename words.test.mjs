@@ -53,3 +53,7 @@ test("wordFrequency matches Unicode words ignoring case", () => {
 test("replaceWord replaces the word literally, ignoring case", () => {
   assert.equal(replaceWord("a.b A.B axb", "a.b", "x"), "x x axb");
 });
+
+test("replaceWord works on the supported Node runtime", () => {
+  assert.doesNotThrow(() => replaceWord("cat CAT", "cat", "dog"));
+});
