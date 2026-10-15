@@ -55,5 +55,5 @@ test("replaceWord replaces the word literally, ignoring case", () => {
 });
 
 test("replaceWord works on the supported Node runtime", () => {
-  assert.doesNotThrow(() => replaceWord("cat CAT", "cat", "dog"));
+  assert.equal(replaceWord("cat CAT", "cat", "dog"), "dog dog");
 });
