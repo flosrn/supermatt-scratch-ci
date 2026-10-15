@@ -10,3 +10,8 @@ export function wordFrequency(text, word) {
   const literal = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return text.match(new RegExp(`(?<![\\p{L}\\p{N}_])${literal}(?![\\p{L}\\p{N}_])`, "giu"))?.length ?? 0;
 }
+
+// Replaces every literal occurrence of `word` in `text`, ignoring case.
+export function replaceWord(text, word, replacement) {
+  return text.replace(new RegExp(RegExp.escape(word), "gi"), () => replacement);
+}

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { wordCount, wordFrequency } from "./words.mjs";
+import { replaceWord, wordCount, wordFrequency } from "./words.mjs";
 
 test("wordCount splits on any whitespace", () => {
   assert.equal(wordCount(" a  b\tc\n"), 3);
@@ -48,4 +48,8 @@ test("wordFrequency counts nonoverlapping literal occurrences", () => {
 
 test("wordFrequency matches Unicode words ignoring case", () => {
   assert.equal(wordFrequency("café CAFÉ", "café"), 2);
+});
+
+test("replaceWord replaces the word literally, ignoring case", () => {
+  assert.equal(replaceWord("a.b A.B axb", "a.b", "x"), "x x axb");
 });
